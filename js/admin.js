@@ -78,18 +78,26 @@ async function loadAll() {
   if (typeof io !== 'undefined') {
     const socket = io();
     socket.on('visitorUpdate', (data) => {
-      updateStats(usersRes.users.length, sessionsRes.sessions.length, projectsRes.projects.length, coursesRes.courses.length, data.count);
+      // Handle both old format (count) and new format (active, total)
+      const active = data.active !== undefined ? data.active : data.count;
+      const total = data.total !== undefined ? data.total : '...';
+      updateStats(usersRes.users.length, sessionsRes.sessions.length, projectsRes.projects.length, coursesRes.courses.length, active, total);
     });
   }
 
-  updateStats(usersRes.users.length, sessionsRes.sessions.length, projectsRes.projects.length, coursesRes.courses.length, 'Loading...');
+  updateStats(usersRes.users.length, sessionsRes.sessions.length, projectsRes.projects.length, coursesRes.courses.length, '...', '...');
 }
 
-function updateStats(users, sessions, projects, courses, visitors) {
+function updateStats(users, sessions, projects, courses, active, total) {
   const statsEl = document.getElementById('stats');
   statsEl.innerHTML = `
-        <span style="color: #4ade80; margin-right: 15px;">● Live Visitors: <b>${visitors}</b></span>
-        Users: ${users} · Sessions: ${sessions} · Projects: ${projects} · Courses: ${courses}
+        <div style="display:flex; gap: 20px; align-items:center; margin-bottom: 10px;">
+            <span style="color: #4ade80;">● Live: <b>${active}</b></span>
+            <span style="color: #60a5fa;">👁 Total: <b>${total}</b></span>
+        </div>
+        <div style="font-size: 0.9rem; color: #94a3b8;">
+            Users: ${users} · Sessions: ${sessions} · Projects: ${projects} · Courses: ${courses}
+        </div>
     `;
 }
 

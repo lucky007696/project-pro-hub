@@ -454,6 +454,8 @@ app.delete('/api/courses/:id', requireAdmin, async (req, res) => {
     }
 });
 
+const SiteStats = require('./models/SiteStats');
+
 // === SOCKET.IO & SERVER SETUP ===
 const http = require('http');
 const server = http.createServer(app);
@@ -467,27 +469,46 @@ const io = new Server(server, {
 
 let activeVisitors = 0;
 
-io.on('connection', (socket) => {
+io.on('connection', async (socket) => {
     activeVisitors++;
-    console.log(`New visitor connected: ${socket.id}. Total: ${activeVisitors}`);
 
-    // Broadcast to all clients
-    io.emit('visitorUpdate', { count: activeVisitors });
+    // Increment Total Visits in DB
+    let stats = await SiteStats.findOne();
+    if (!stats) {
+        stats = new SiteStats({ totalVisits: 0 });
+    }
+    stats.totalVisits++;
+    await stats.save();
+
+    console.log(`New visitor connected: ${socket.id}. total: ${activeVisitors}. Historical: ${stats.totalVisits}`);
+
+    // Broadcast to all clients (Active + Historical)
+    io.emit('visitorUpdate', {
+        active: activeVisitors,
+        total: stats.totalVisits
+    });
 
     socket.on('disconnect', () => {
         activeVisitors--;
         console.log(`Visitor disconnected: ${socket.id}. total: ${activeVisitors}`);
-        io.emit('visitorUpdate', { count: activeVisitors });
+        // Broadcast update (total doesn't change on disconnect)
+        io.emit('visitorUpdate', {
+            active: activeVisitors,
+            total: stats.totalVisits
+        });
     });
 });
 
 // Start Server
 if (require.main === module) {
+    console.log('Attempting to start server on port', PORT);
     server.listen(PORT, () => {
         console.log(`Server running at http://localhost:${PORT}`);
         if (!process.env.MONGO_URI || process.env.MONGO_URI.includes('<username>')) {
             console.warn('WARNING: MongoDB URI is not set correctly in .env file!');
         }
+    }).on('error', (err) => {
+        console.error('SERVER ERROR:', err);
     });
 
 }
