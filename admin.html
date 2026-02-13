@@ -1,0 +1,348 @@
+<!doctype html>
+<html lang="en">
+
+<head>
+  <meta charset="utf-8" />
+  <meta name="viewport" content="width=device-width,initial-scale=1" />
+  <title>Admin - ProjectPro Hub</title>
+  <link rel="stylesheet" href="css/admin.css">
+</head>
+
+<body>
+
+  <!-- Login Overlay (Visible initially) -->
+  <div id="login-overlay">
+    <div id="login-box">
+      <h2 style="margin-bottom: 2rem;">Admin Access</h2>
+      <input type="password" id="admin-pass" placeholder="Enter password" style="margin-bottom: 1.5rem;">
+      <button id="btn-login" class="btn primary" style="width: 100%;">Unlock Dashboard</button>
+      <div id="login-error" style="color: #ef4444; margin-top: 1rem; display: none;">Invalid Password</div>
+    </div>
+  </div>
+
+  <!-- Main Dashboard (Hidden initially) -->
+  <div id="admin-wrapper" class="hide">
+
+    <!-- Sidebar -->
+    <aside>
+      <h2>ProjectPro Hub</h2>
+      <button class="nav-btn active" data-target="view-overview">Overview</button>
+      <button class="nav-btn" data-target="view-users">Users & Hires</button>
+      <button class="nav-btn" data-target="view-projects">Projects</button>
+      <button class="nav-btn" data-target="view-courses">Courses</button>
+      <div style="flex: 1;"></div>
+      <button id="btn-logout" class="nav-btn" style="color: #ef4444;">Logout</button>
+    </aside>
+
+    <!-- Content Area -->
+    <main>
+
+      <!-- View: Overview -->
+      <section id="view-overview" class="view-section active">
+        <div class="view-header">
+          <h1>Dashboard Overview</h1>
+        </div>
+
+        <div class="panel">
+          <h3>Quick Stats</h3>
+          <div id="stats" style="font-size: 1.1rem; color: var(--accent); margin-top: 1rem;">Loading...</div>
+        </div>
+
+        <div class="grid-1">
+          <div class="panel">
+            <div style="display:flex; justify-content:space-between; align-items:center; margin-bottom: 1rem;">
+              <h3>Recent Login Audits</h3>
+              <button id="export-logins" class="btn">Export CSV</button>
+            </div>
+            <div class="table-container" style="max-height: 300px;">
+              <table id="logins-table">
+                <thead>
+                  <tr>
+                    <th>Name</th>
+                    <th>Time</th>
+                    <th>IP</th>
+                    <th>Action</th>
+                  </tr>
+                </thead>
+                <tbody></tbody>
+              </table>
+            </div>
+          </div>
+          <div class="panel">
+            <div style="display:flex; justify-content:space-between; align-items:center; margin-bottom: 1rem;">
+              <h3>Recent Sessions</h3>
+              <button id="export-sessions" class="btn">Export CSV</button>
+            </div>
+            <div class="table-container" style="max-height: 300px;">
+              <table id="sessions-table">
+                <thead>
+                  <tr>
+                    <th>Name</th>
+                    <th>Type</th>
+                    <th>Time</th>
+                    <th>Action</th>
+                  </tr>
+                </thead>
+                <tbody></tbody>
+              </table>
+            </div>
+          </div>
+        </div>
+      </section>
+
+      <!-- View: Users & Hires -->
+      <section id="view-users" class="view-section">
+        <div class="view-header">
+          <h1>User Management</h1>
+        </div>
+
+        <div class="panel">
+          <div style="display:flex; justify-content:space-between; align-items:center; margin-bottom: 1rem;">
+            <h3>Registered Users</h3>
+            <button id="export-users" class="btn">Export CSV</button>
+          </div>
+          <div style="margin-bottom: 1rem;">
+            <input id="users-filter" placeholder="Filter by name...">
+          </div>
+          <div class="table-container" style="max-height: 400px;">
+            <table id="users-table">
+              <thead>
+                <tr>
+                  <th>Name</th>
+                  <th>Email</th>
+                  <th>Mobile</th>
+                  <th>Actions</th>
+                </tr>
+              </thead>
+              <tbody></tbody>
+            </table>
+          </div>
+        </div>
+
+        <div class="grid-2">
+          <div class="panel">
+            <div style="display:flex; justify-content:space-between; align-items:center; margin-bottom: 1rem;">
+              <h3>Hire Requests</h3>
+              <button id="export-hires" class="btn">Export CSV</button>
+            </div>
+            <div class="table-container" style="max-height: 300px;">
+              <table id="hires-table">
+                <thead>
+                  <tr>
+                    <th>Name</th>
+                    <th>Contact</th>
+                    <th>Message</th>
+                    <th>Action</th>
+                  </tr>
+                </thead>
+                <tbody></tbody>
+              </table>
+            </div>
+          </div>
+          <div class="panel">
+            <div style="display:flex; justify-content:space-between; align-items:center; margin-bottom: 1rem;">
+              <h3>Bulk Quotes</h3>
+              <button id="export-bulk" class="btn">Export CSV</button>
+            </div>
+            <div class="table-container" style="max-height: 300px;">
+              <table id="bulk-table">
+                <thead>
+                  <tr>
+                    <th>Org</th>
+                    <th>Count</th>
+                    <th>Requirements</th>
+                    <th>Action</th>
+                  </tr>
+                </thead>
+                <tbody></tbody>
+              </table>
+            </div>
+          </div>
+        </div>
+      </section>
+
+      <!-- View: Projects -->
+      <section id="view-projects" class="view-section">
+        <div class="view-header">
+          <h1>Project Management</h1>
+          <button class="btn primary" id="open-add-project">+ Add New Project</button>
+        </div>
+
+        <div class="panel">
+          <div class="table-container" style="max-height: 600px;">
+            <table id="projects-table">
+              <thead>
+                <tr>
+                  <th>Image</th>
+                  <th>Title</th>
+                  <th>Category</th>
+                  <th>Featured</th>
+                  <th>Actions</th>
+                </tr>
+              </thead>
+              <tbody></tbody>
+            </table>
+          </div>
+        </div>
+      </section>
+
+      <!-- View: Courses -->
+      <section id="view-courses" class="view-section">
+        <div class="view-header">
+          <h1>Course Management</h1>
+          <button class="btn primary" id="open-add-course">+ Add New Course</button>
+        </div>
+
+        <div class="panel">
+          <div class="table-container" style="max-height: 600px;">
+            <table id="courses-table">
+              <thead>
+                <tr>
+                  <th>Title</th>
+                  <th>Level</th>
+                  <th>Duration</th>
+                  <th>Actions</th>
+                </tr>
+              </thead>
+              <tbody></tbody>
+            </table>
+          </div>
+        </div>
+      </section>
+
+    </main>
+  </div>
+
+  <!-- Side Drawer Container -->
+  <div id="drawer-backdrop" class="drawer-backdrop">
+    <div id="side-drawer" class="side-drawer">
+      <div class="drawer-header">
+        <h3 id="drawer-title">Title</h3>
+        <button id="close-drawer" class="btn" style="border:none; padding: 0.5rem;">✕</button>
+      </div>
+      <div class="drawer-body" id="drawer-content">
+        <!-- Dynamic Form Content Will Be Injected Here -->
+      </div>
+    </div>
+  </div>
+
+  <!-- Hidden Template Forms -->
+  <div style="display:none;">
+    <!-- Project Form Template -->
+    <div id="project-form-template">
+      <form id="add-project-form">
+        <input type="hidden" name="id">
+        <div class="form-group">
+          <label>Project Title</label>
+          <input name="title" required>
+        </div>
+        <div class="grid-2">
+          <div class="form-group">
+            <label>Category</label>
+            <select name="category" required>
+              <option value="ai">AI/ML</option>
+              <option value="web">Web Dev</option>
+              <option value="chatbot">Chatbots</option>
+              <option value="iot">IoT</option>
+              <option value="mobile">Mobile</option>
+              <option value="research">Research</option>
+              <option value="security">Security</option>
+            </select>
+          </div>
+          <div class="form-group">
+            <label>Priority</label>
+            <input type="number" name="priority" value="0">
+          </div>
+        </div>
+        <div class="form-group">
+          <label>Description</label>
+          <textarea name="description" rows="4" required></textarea>
+        </div>
+        <div class="form-group">
+          <label>Image Upload</label>
+          <div style="display: flex; gap: 0.5rem;">
+            <input type="file" id="project-file" accept="image/*">
+            <button type="button" id="upload-project-btn" class="btn">Upload</button>
+          </div>
+          <input type="hidden" name="image" id="project-image-url" required>
+          <small id="project-image-preview" style="color: var(--accent); display: block; margin-top: 5px;"></small>
+        </div>
+        <div class="form-group">
+          <label>Tags (comma separated)</label>
+          <input name="tags" placeholder="React, Python, etc.">
+        </div>
+        <div class="grid-2">
+          <div class="form-group">
+            <label>Live Link</label>
+            <input name="link">
+          </div>
+          <div class="form-group">
+            <label>Badge</label>
+            <input name="badge">
+          </div>
+        </div>
+        <div class="form-group">
+          <label style="display:flex; align-items:center; gap: 0.5rem; cursor: pointer;">
+            <input type="checkbox" name="featured" style="width: auto;">
+            Featured Highlight?
+          </label>
+        </div>
+        <div class="drawer-footer" style="padding: 0; border: none; background: transparent;">
+          <button type="button" class="btn close-drawer-btn">Cancel</button>
+          <button type="submit" class="btn primary">Save Project</button>
+        </div>
+      </form>
+    </div>
+
+    <!-- Course Form Template -->
+    <div id="course-form-template">
+      <form id="add-course-form">
+        <input type="hidden" name="id">
+        <div class="form-group">
+          <label>Course Title</label>
+          <input name="title" required>
+        </div>
+        <div class="grid-2">
+          <div class="form-group">
+            <label>Level</label>
+            <select name="level" required>
+              <option value="beginner">Beginner</option>
+              <option value="intermediate">Intermediate</option>
+              <option value="advanced">Advanced</option>
+            </select>
+          </div>
+          <div class="form-group">
+            <label>Duration</label>
+            <input name="duration" required>
+          </div>
+        </div>
+        <div class="form-group">
+          <label>Description</label>
+          <textarea name="description" rows="4" required></textarea>
+        </div>
+        <div class="form-group">
+          <label>Features (comma separated)</label>
+          <input name="features" placeholder="Certificate, Live Sessions...">
+        </div>
+        <div class="grid-2">
+          <div class="form-group">
+            <label>Badge</label>
+            <input name="badge">
+          </div>
+          <div class="form-group">
+            <label>Session Type Key</label>
+            <input name="sessionType" value="training-demo">
+          </div>
+        </div>
+        <div class="drawer-footer" style="padding: 0; border: none; background: transparent;">
+          <button type="button" class="btn close-drawer-btn">Cancel</button>
+          <button type="submit" class="btn primary">Save Course</button>
+        </div>
+      </form>
+    </div>
+  </div>
+
+  <script src="js/admin.js"></script>
+</body>
+
+</html>

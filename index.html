@@ -1,0 +1,847 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta name="description"
+        content="Professional Freelancer & Expert Mentor - Providing Premium Tech Solutions and BTech Project Guidance">
+    <title>Expert Freelancer & Mentor | BTech Projects & Training</title>
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link
+        href="https://fonts.googleapis.com/css2?family=Orbitron:wght@400;700;900&family=Space+Mono:wght@400;700&display=swap"
+        rel="stylesheet">
+    <link rel="stylesheet" href="css/style.css">
+</head>
+
+<body>
+    <!-- Loading Screen -->
+    <div id="loading-screen">
+        <div class="loader-content">
+            <div class="logo-pulse">PPH</div>
+            <div class="loading-bar"></div>
+        </div>
+    </div>
+
+    <!-- Navigation -->
+    <nav class="navbar" id="navbar">
+        <div class="nav-container">
+            <div class="logo">
+                <span class="logo-icon">⚡</span>
+                <span class="logo-text">ProjectPro Hub</span>
+            </div>
+            <div class="nav-links" id="navLinks">
+                <a href="#home" class="nav-link active">Home</a>
+                <a href="#services" class="nav-link">Services</a>
+                <a href="#projects" class="nav-link">Projects</a>
+                <a href="#training" class="nav-link">Training</a>
+                <a href="#testimonials" class="nav-link">Reviews</a>
+                <a href="#contact" class="nav-link">Contact</a>
+                <a href="login.html" class="nav-link nav-btn login-btn">Login</a>
+                <a href="register.html" class="nav-link nav-btn register-btn">Register</a>
+                <a href="blog.html" class="nav-link blog-link">Blog</a>
+            </div>
+            <div class="hamburger" id="hamburger">
+                <span></span>
+                <span></span>
+                <span></span>
+            </div>
+        </div>
+        <div class="progress-bar" id="progressBar"></div>
+    </nav>
+
+    <!-- Hero Section -->
+    <section id="home" class="hero">
+        <div class="particles" id="particles"></div>
+        <div class="hero-content">
+            <div class="hero-badge fade-in">🚀 Professional Freelancer & Expert Mentor</div>
+            <h1 class="hero-title fade-in-up">
+                Turning Ideas into <span class="gradient-text typed-text"></span>
+            </h1>
+            <p class="hero-subtitle fade-in-up-delay">Premium Freelance Development | BTech Project Guidance |
+                Specialized Training</p>
+            <div class="hero-cta fade-in-up-delay-2">
+                <a href="#contact" class="cta-btn primary">
+                    <span>📅 Book Free Live Session</span>
+                    <div class="btn-shine"></div>
+                </a>
+                <a href="#projects" class="cta-btn secondary">
+                    <span>🎓 View Portfolio</span>
+                    <div class="btn-shine"></div>
+                </a>
+                <a href="#training" class="cta-btn tertiary">
+                    <span>🎓 Learn with Me</span>
+                    <div class="btn-shine"></div>
+                </a>
+            </div>
+        </div>
+        <div class="scroll-indicator">
+            <div class="mouse">
+                <div class="wheel"></div>
+            </div>
+            <p>Scroll to explore</p>
+        </div>
+    </section>
+
+    <!-- Services Section -->
+    <section id="services" class="services">
+        <div class="container">
+            <div class="section-header">
+                <h2 class="section-title">My Expertise</h2>
+                <p class="section-subtitle">Delivering premium solutions for Clients & Students</p>
+            </div>
+            <div class="services-grid">
+                <div class="service-card glass-card featured" data-aos="fade-up" data-delay="0">
+                    <div class="featured-badge">Primary Focus</div>
+                    <div class="service-icon">�</div>
+                    <h3 class="service-title">Freelance Development</h3>
+                    <p class="service-description">High-quality, custom solutions for businesses and startups.
+                        SPECIALIZING in AI, Web, and Automation.</p>
+                    <ul class="service-features">
+                        <li>✓ Full-Stack Web Development</li>
+                        <li>✓ AI & Machine Learning Solutions</li>
+                        <li>✓ Medical AI Systems</li>
+                        <li>✓ Automation & Tools</li>
+                    </ul>
+                    <a href="#" class="service-btn open-hire-modal">Hire Me →</a>
+                </div>
+
+                <div class="service-card glass-card" data-aos="fade-up" data-delay="100">
+                    <div class="service-icon">�</div>
+                    <h3 class="service-title">BTech Project Support</h3>
+                    <p class="service-description">Helping students build industry-standard projects with code
+                        explanations and documentation.</p>
+                    <ul class="service-features">
+                        <li>✓ Final Year Projects</li>
+                        <li>✓ IEEE Standard Documentation</li>
+                        <li>✓ Viva Support</li>
+                        <li>✓ Custom Project Ideas</li>
+                    </ul>
+                    <a href="#projects" class="service-btn">View Examples →</a>
+                </div>
+
+                <div class="service-card glass-card" data-aos="fade-up" data-delay="200">
+                    <div class="service-icon">�</div>
+                    <h3 class="service-title">Specialized Training</h3>
+                    <p class="service-description">Practical, hands-on courses to master modern technologies and project
+                        building.</p>
+                    <ul class="service-features">
+                        <li>✓ Wix Website Building</li>
+                        <li>✓ Building AI/ML/DL Projects</li>
+                        <li>✓ Web Project Development</li>
+                        <li>✓ 1-on-1 Mentorship</li>
+                    </ul>
+                    <a href="#training" class="service-btn">Start Learning →</a>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Hire Me Modal -->
+    <div id="hire-modal" class="modal" aria-hidden="true">
+        <div class="modal-backdrop"></div>
+        <div class="modal-content">
+            <button class="modal-close hire-modal-close" aria-label="Close">✕</button>
+            <div class="modal-header">
+                <h3>Hire Me</h3>
+                <p>Tell me about your project — I will get back to you shortly.</p>
+            </div>
+            <form id="hire-form" class="modal-form">
+                <label>Name</label>
+                <input type="text" name="name" required>
+
+                <label>Email</label>
+                <input type="email" name="email" required>
+
+                <label>Phone</label>
+                <input type="tel" name="phone" required>
+
+                <label>Message</label>
+                <textarea name="message" rows="4" required></textarea>
+
+                <div class="modal-actions">
+                    <button type="submit" class="btn primary">Send Request</button>
+                    <button type="button" class="btn secondary hire-modal-close">Cancel</button>
+                </div>
+            </form>
+        </div>
+    </div>
+
+    <!-- Projects Section -->
+    <section id="projects" class="projects">
+        <div class="container">
+            <div class="section-header">
+                <h2 class="section-title">Featured Projects</h2>
+                <p class="section-subtitle">Industry-standard projects ready for submission</p>
+            </div>
+
+            <div class="project-filters">
+                <button class="filter-btn active" data-filter="all">All Projects</button>
+                <button class="filter-btn" data-filter="web">Web Dev</button>
+                <button class="filter-btn" data-filter="ai">AI/ML</button>
+                <button class="filter-btn" data-filter="chatbot">Chatbots</button>
+                <button class="filter-btn" data-filter="iot">IoT</button>
+                <button class="filter-btn" data-filter="mobile">Mobile</button>
+            </div>
+
+            <div class="projects-grid">
+                <!-- Data loaded dynamically via JS -->
+            </div>
+
+            <div class="view-more-section">
+                <button class="btn-outline-glow">View All Projects →</button>
+            </div>
+        </div>
+    </section>
+
+    <!-- Training Section -->
+    <section id="training" class="training">
+        <div class="container">
+            <div class="section-header">
+                <h2 class="section-title">Master Tech Skills</h2>
+                <p class="section-subtitle">Guided learning paths from beginner to advanced</p>
+            </div>
+
+            <div class="training-tabs">
+                <button class="training-tab active" data-track="all">All Levels</button>
+                <button class="training-tab" data-track="beginner">Beginner</button>
+                <button class="training-tab" data-track="intermediate">Intermediate</button>
+                <button class="training-tab" data-track="advanced">Advanced</button>
+            </div>
+
+            <div class="training-content">
+                <div class="training-track active" data-track-content="all">
+                    <div class="courses-grid">
+                        <!-- Loaded by JS -->
+                    </div>
+                </div>
+                <div class="training-track" data-track-content="beginner">
+                    <div class="courses-grid">
+                        <!-- Loaded by JS -->
+                    </div>
+                </div>
+                <div class="training-track" data-track-content="intermediate">
+                    <div class="courses-grid">
+                        <!-- Loaded by JS -->
+                    </div>
+                </div>
+                <div class="training-track" data-track-content="advanced">
+                    <div class="courses-grid">
+                        <!-- Loaded by JS -->
+                    </div>
+                </div>
+            </div>
+
+            <div class="bundle-offer" data-aos="flip-up">
+                <div class="bundle-badge">💎 Special Offer</div>
+                <h3 class="bundle-title">Project + Class Bundle</h3>
+                <p class="bundle-description">Buy any project and get the related course at 30% off! Learn to build it
+                    yourself while having a working reference.</p>
+
+            </div>
+        </div>
+    </section>
+
+    <!-- How It Works -->
+    <section id="process" class="process">
+        <div class="container">
+            <div class="section-header">
+                <h2 class="section-title">Your Path to Success</h2>
+                <p class="section-subtitle">Simple steps to transform your BTech journey</p>
+            </div>
+
+            <div class="process-timeline">
+                <div class="process-step" data-aos="fade-right" data-delay="0">
+                    <div class="step-number">01</div>
+                    <div class="step-content">
+                        <h3 class="step-title">Choose Your Goal</h3>
+                        <p class="step-description">Browse projects or courses based on your needs and academic
+                            requirements.</p>
+                    </div>
+                    <div class="step-connector"></div>
+                </div>
+
+                <div class="process-step" data-aos="fade-right" data-delay="100">
+                    <div class="step-number">02</div>
+                    <div class="step-content">
+                        <h3 class="step-title">Learn or Buy</h3>
+                        <p class="step-description">Enroll in classes to build from scratch or purchase ready-made
+                            projects instantly.</p>
+                    </div>
+                    <div class="step-connector"></div>
+                </div>
+
+                <div class="process-step" data-aos="fade-right" data-delay="200">
+                    <div class="step-number">03</div>
+                    <div class="step-content">
+                        <h3 class="step-title">Get Support</h3>
+                        <p class="step-description">Access documentation, code explanations, and personalized
+                            mentorship.</p>
+                    </div>
+                    <div class="step-connector"></div>
+                </div>
+
+                <div class="process-step" data-aos="fade-right" data-delay="300">
+                    <div class="step-number">04</div>
+                    <div class="step-content">
+                        <h3 class="step-title">Build Your Future</h3>
+                        <p class="step-description">Submit with confidence or launch your own projects with our
+                            guidance.</p>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Stats Section -->
+    <section id="stats" class="stats">
+        <div class="container">
+            <div class="stats-grid">
+                <div class="stat-item" data-aos="zoom-in" data-delay="0">
+                    <div class="stat-number" data-count="5">0</div>
+                    <div class="stat-suffix">+</div>
+                    <div class="stat-label">Years Experience</div>
+                </div>
+                <div class="stat-item" data-aos="zoom-in" data-delay="100">
+                    <div class="stat-number" data-count="50">0</div>
+                    <div class="stat-suffix">+</div>
+                    <div class="stat-label">Projects Delivered</div>
+                </div>
+                <div class="stat-item" data-aos="zoom-in" data-delay="200">
+                    <div class="stat-number" data-count="200">0</div>
+                    <div class="stat-suffix">+</div>
+                    <div class="stat-label">Students Mentored</div>
+                </div>
+                <div class="stat-item" data-aos="zoom-in" data-delay="300">
+                    <div class="stat-number" data-count="100">0</div>
+                    <div class="stat-suffix">%</div>
+                    <div class="stat-label">Client Satisfaction</div>
+                </div>
+            </div>
+
+            <div class="features-grid">
+                <div class="feature-item" data-aos="fade-up" data-delay="0">
+                    <div class="feature-icon">✅</div>
+                    <h4>Complete Source Code</h4>
+                    <p>Well-documented code with explanations</p>
+                </div>
+                <div class="feature-item" data-aos="fade-up" data-delay="100">
+                    <div class="feature-icon">🔧</div>
+                    <h4>Direct Mentorship</h4>
+                    <p>Get help directly from the developer</p>
+                </div>
+                <div class="feature-item" data-aos="fade-up" data-delay="200">
+                    <div class="feature-icon">💰</div>
+                    <h4>Fair Pricing</h4>
+                    <p>Affordable rates for premium quality</p>
+                </div>
+                <div class="feature-item" data-aos="fade-up" data-delay="300">
+                    <div class="feature-icon">🏆</div>
+                    <h4>Industry Standards</h4>
+                    <p>Real-world, production-grade projects</p>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Testimonials -->
+    <section id="testimonials" class="testimonials">
+        <div class="container">
+            <div class="section-header">
+                <h2 class="section-title">What Students Say</h2>
+                <p class="section-subtitle">Real experiences from BTech students like you</p>
+            </div>
+
+            <div class="testimonials-slider">
+                <div class="testimonial-card" data-aos="fade-in">
+                    <div class="testimonial-rating">⭐⭐⭐⭐⭐</div>
+                    <p class="testimonial-text">"ProjectPro Hub saved my final year! The e-commerce project was perfect,
+                        and the support team helped me customize it for my college requirements. Highly recommended!"
+                    </p>
+                    <div class="testimonial-author">
+                        <div class="author-avatar">AR</div>
+                        <div class="author-info">
+                            <h4>Arjun Reddy</h4>
+                            <p>BTech CSE, 2025 | JNTUH</p>
+                        </div>
+                    </div>
+                </div>
+
+                <div class="testimonial-card" data-aos="fade-in">
+                    <div class="testimonial-rating">⭐⭐⭐⭐⭐</div>
+                    <p class="testimonial-text">"The machine learning course was incredibly detailed. I went from
+                        knowing nothing about AI to building my own face recognition system in 6 weeks. Worth every
+                        penny!"</p>
+                    <div class="testimonial-author">
+                        <div class="author-avatar">PS</div>
+                        <div class="author-info">
+                            <h4>Priya Sharma</h4>
+                            <p>BTech IT, 2024 | VIT Vellore</p>
+                        </div>
+                    </div>
+                </div>
+
+                <div class="testimonial-card" data-aos="fade-in">
+                    <div class="testimonial-rating">⭐⭐⭐⭐⭐</div>
+                    <p class="testimonial-text">"Best investment for my career! The freelancing course taught me how to
+                        get real clients. I'm now earning while still in college. Thank you ProjectPro Hub!"</p>
+                    <div class="testimonial-author">
+                        <div class="author-avatar">RK</div>
+                        <div class="author-info">
+                            <h4>Rahul Kumar</h4>
+                            <p>BTech ECE, 2025 | NIT Trichy</p>
+                        </div>
+                    </div>
+                </div>
+            </div>
+
+            <div class="slider-controls">
+                <button class="slider-btn prev">←</button>
+                <div class="slider-dots">
+                    <span class="dot active"></span>
+                    <span class="dot"></span>
+                    <span class="dot"></span>
+                </div>
+                <button class="slider-btn next">→</button>
+            </div>
+        </div>
+    </section>
+
+    <!-- Blog Preview -->
+    <section id="blog-preview" class="blog-preview">
+        <div class="container">
+            <div class="section-header">
+                <h2 class="section-title">Latest Tutorials & Guides</h2>
+                <p class="section-subtitle">Free resources to boost your learning</p>
+            </div>
+
+            <div class="blog-grid">
+                <div class="blog-card" data-aos="slide-up" data-delay="0">
+                    <div class="blog-image">
+                        <div class="blog-category">Tutorial</div>
+                    </div>
+                    <div class="blog-content">
+                        <h3 class="blog-title">How to Build a MERN Stack App in 2026</h3>
+                        <p class="blog-excerpt">Complete beginner's guide to creating full-stack applications using
+                            MongoDB, Express, React, and Node.js...</p>
+                        <div class="blog-meta">
+                            <span class="blog-date">Jan 20, 2026</span>
+
+                        </div>
+                    </div>
+                </div>
+
+                <div class="blog-card" data-aos="slide-up" data-delay="100">
+                    <div class="blog-image">
+                        <div class="blog-category">Guide</div>
+                    </div>
+                    <div class="blog-content">
+                        <h3 class="blog-title">Top 10 BTech Project Ideas for 2026</h3>
+                        <p class="blog-excerpt">Trending project ideas across AI, Web, IoT, and Mobile development that
+                            will impress your professors...</p>
+                        <div class="blog-meta">
+                            <span class="blog-date">Jan 15, 2026</span>
+
+                        </div>
+                    </div>
+                </div>
+
+                <div class="blog-card" data-aos="slide-up" data-delay="200">
+                    <div class="blog-image">
+                        <div class="blog-category">Tips</div>
+                    </div>
+                    <div class="blog-content">
+                        <h3 class="blog-title">Freelancing Tips for Engineering Students</h3>
+                        <p class="blog-excerpt">Learn how to start freelancing while studying, find your first client,
+                            and manage projects effectively...</p>
+                        <div class="blog-meta">
+                            <span class="blog-date">Jan 10, 2026</span>
+
+                        </div>
+                    </div>
+                </div>
+            </div>
+
+            <div class="blog-cta">
+                <a href="blog.html" class="btn-outline-glow">View All Blogs →</a>
+            </div>
+        </div>
+    </section>
+
+    <!-- FAQ Section -->
+    <section id="faq" class="faq">
+        <div class="container">
+            <div class="section-header">
+                <h2 class="section-title">Frequently Asked Questions</h2>
+                <p class="section-subtitle">Everything you need to know</p>
+            </div>
+
+            <div class="faq-list">
+                <div class="faq-item" data-aos="fade-left">
+                    <div class="faq-question">
+                        <h3>How do I buy a project?</h3>
+                        <span class="faq-toggle">+</span>
+                    </div>
+                    <div class="faq-answer">
+                        <p>To buy or discuss a project, simply book a free live session using the "Book Free Live
+                            Session" button. During the session, we'll discuss your project requirements, answer all
+                            your questions, and work out the details. There's no online payment system here — we handle
+                            everything through direct communication.</p>
+                    </div>
+                </div>
+
+                <div class="faq-item" data-aos="fade-left" data-delay="100">
+                    <div class="faq-question">
+                        <h3>How can I book a free live session?</h3>
+                        <span class="faq-toggle">+</span>
+                    </div>
+                    <div class="faq-answer">
+                        <p>Click the "Book Free Live Session" button in the Hero section or use the contact form to
+                            request a session. Fill the short form with preferred times and goals (project help, course
+                            demo, or consultation). We'll confirm by email and share a meeting link — sessions are free
+                            for new students and buyers.</p>
+                    </div>
+                </div>
+
+                <div class="faq-item" data-aos="fade-left" data-delay="200">
+                    <div class="faq-question">
+                        <h3>How do I join a course or training program?</h3>
+                        <span class="faq-toggle">+</span>
+                    </div>
+                    <div class="faq-answer">
+                        <p>Open the <a href="#training">Training</a> section, choose a course, and click "Start
+                            Learning" or "Enroll". You can also book a free live session to see a course demo before
+                            enrolling. Courses include live sessions, recordings, downloadable resources, hands-on
+                            projects, and 1-on-1 mentorship where applicable.</p>
+                    </div>
+                </div>
+
+                <div class="faq-item" data-aos="fade-left" data-delay="300">
+                    <div class="faq-question">
+                        <h3>Do you provide project explanations and walkthroughs?</h3>
+                        <span class="faq-toggle">+</span>
+                    </div>
+                    <div class="faq-answer">
+                        <p>Yes — every project includes documentation, code comments, and optional video walkthroughs.
+                            If you need a live explanation, book a free live session and we'll walk you through the
+                            code, setup, and common exam/viva questions.</p>
+                    </div>
+                </div>
+
+                <div class="faq-item" data-aos="fade-left" data-delay="400">
+                    <div class="faq-question">
+                        <h3>Can I request custom changes before buying?</h3>
+                        <span class="faq-toggle">+</span>
+                    </div>
+                    <div class="faq-answer">
+                        <p>Yes — contact us with your requirements. We will provide a customization quote and timeline.
+                            Small tweaks may be included free depending on the project; larger customizations are quoted
+                            separately.</p>
+                    </div>
+                </div>
+
+                <div class="faq-item" data-aos="fade-left" data-delay="500">
+                    <div class="faq-question">
+                        <h3>What is your refund policy?</h3>
+                        <span class="faq-toggle">+</span>
+                    </div>
+                    <div class="faq-answer">
+                        <p>We offer a 7-day money-back guarantee on courses and projects. If you are not satisfied,
+                            contact us within 7 days for a refund. Some custom work and support services may be
+                            non-refundable — contact support for details.</p>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Contact Section -->
+    <section id="contact" class="contact">
+        <div class="container">
+            <div class="section-header">
+                <h2 class="section-title">Book Your Free Live Session</h2>
+                <p class="section-subtitle">Schedule a personalized consultation with our experts</p>
+            </div>
+
+            <div class="contact-wrapper">
+                <div class="contact-form-container" data-aos="fade-right">
+                    <form class="contact-form" id="contactForm">
+                        <div class="form-group">
+                            <label for="name">Your Name</label>
+                            <input type="text" id="name" name="name" required placeholder="Enter your full name">
+                        </div>
+                        <div class="form-group">
+                            <label for="email">Email Address</label>
+                            <input type="email" id="email" name="email" required placeholder="your.email@example.com">
+                        </div>
+                        <div class="form-group">
+                            <label for="phone">Phone Number</label>
+                            <input type="tel" id="phone" name="phone" required placeholder="+91 98765 43210">
+                        </div>
+                        <div class="form-group">
+                            <label for="sessionType">Session Type</label>
+                            <select id="sessionType" name="sessionType" required>
+                                <option value="">Select a session type</option>
+                                <option value="project-consultation">BTech Project Consultation</option>
+                                <option value="training-demo">Training Program Demo</option>
+                                <option value="freelance-discussion">Freelance Project Discussion</option>
+                                <option value="career-guidance">Career & Mentorship Guidance</option>
+                            </select>
+                        </div>
+                        <div class="form-group">
+                            <label for="sessionMessage">What would you like to discuss?</label>
+                            <textarea id="sessionMessage" name="sessionMessage" rows="4" required
+                                placeholder="Tell us about your goals and requirements..."></textarea>
+                        </div>
+                        <button type="submit" class="form-submit-btn">
+                            <span>Book Session</span>
+                            <div class="btn-shine"></div>
+                        </button>
+                    </form>
+                    <div class="form-success" id="formSuccess">
+                        <div class="success-icon">✓</div>
+                        <h3>Session Booked Successfully!</h3>
+                        <p>A confirmation has been sent to your email. We look forward to our session!</p>
+                    </div>
+                </div>
+
+                <div class="contact-info" data-aos="fade-left">
+                    <div class="info-card glass-card">
+                        <h3 class="info-title">Contact Information</h3>
+                        <div class="info-items">
+                            <div class="info-item">
+                                <div class="info-icon">📧</div>
+                                <div class="info-content">
+                                    <h4>Email</h4>
+                                    <a href="mailto:projectprohub365@gmail.com">projectprohub365@gmail.com</a>
+                                </div>
+                            </div>
+                            <div class="info-item">
+                                <div class="info-icon">📱</div>
+                                <div class="info-content">
+                                    <h4>WhatsApp</h4>
+                                    <a href="https://wa.me/919014466834">9014466834</a>
+                                </div>
+                            </div>
+                            <div class="info-item">
+                                <div class="info-icon">⏰</div>
+                                <div class="info-content">
+                                    <h4>Response Time</h4>
+                                    <p>Within 24 hours</p>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+
+                    <div class="social-links glass-card">
+                        <h3 class="info-title">Follow Us</h3>
+                        <div class="social-icons">
+                            <a href="#" class="social-icon" title="LinkedIn">
+                                <svg viewBox="0 0 24 24" fill="currentColor">
+                                    <path
+                                        d="M19 3a2 2 0 0 1 2 2v14a2 2 0 0 1-2 2H5a2 2 0 0 1-2-2V5a2 2 0 0 1 2-2h14m-.5 15.5v-5.3a3.26 3.26 0 0 0-3.26-3.26c-.85 0-1.84.52-2.32 1.3v-1.11h-2.79v8.37h2.79v-4.93c0-.77.62-1.4 1.39-1.4a1.4 1.4 0 0 1 1.4 1.4v4.93h2.79M6.88 8.56a1.68 1.68 0 0 0 1.68-1.68c0-.93-.75-1.69-1.68-1.69a1.69 1.69 0 0 0-1.69 1.69c0 .93.76 1.68 1.69 1.68m1.39 9.94v-8.37H5.5v8.37h2.77z" />
+                                </svg>
+                            </a>
+                            <a href="#" class="social-icon" title="GitHub">
+                                <svg viewBox="0 0 24 24" fill="currentColor">
+                                    <path
+                                        d="M12 2A10 10 0 0 0 2 12c0 4.42 2.87 8.17 6.84 9.5.5.08.66-.23.66-.5v-1.69c-2.77.6-3.36-1.34-3.36-1.34-.46-1.16-1.11-1.47-1.11-1.47-.91-.62.07-.6.07-.6 1 .07 1.53 1.03 1.53 1.03.87 1.52 2.34 1.07 2.91.83.09-.65.35-1.09.63-1.34-2.22-.25-4.55-1.11-4.55-4.92 0-1.11.38-2 1.03-2.71-.1-.25-.45-1.29.1-2.64 0 0 .84-.27 2.75 1.02.79-.22 1.65-.33 2.5-.33.85 0 1.71.11 2.5.33 1.91-1.29 2.75-1.02 2.75-1.02.55 1.35.2 2.39.1 2.64.65.71 1.03 1.6 1.03 2.71 0 3.82-2.34 4.66-4.57 4.91.36.31.69.92.69 1.85V21c0 .27.16.59.67.5C19.14 20.16 22 16.42 22 12A10 10 0 0 0 12 2z" />
+                                </svg>
+                            </a>
+                            <a href="#" class="social-icon" title="Instagram">
+                                <svg viewBox="0 0 24 24" fill="currentColor">
+                                    <path
+                                        d="M7.8 2h8.4C19.4 2 22 4.6 22 7.8v8.4a5.8 5.8 0 0 1-5.8 5.8H7.8C4.6 22 2 19.4 2 16.2V7.8A5.8 5.8 0 0 1 7.8 2m-.2 2A3.6 3.6 0 0 0 4 7.6v8.8C4 18.39 5.61 20 7.6 20h8.8a3.6 3.6 0 0 0 3.6-3.6V7.6C20 5.61 18.39 4 16.4 4H7.6m9.65 1.5a1.25 1.25 0 0 1 1.25 1.25A1.25 1.25 0 0 1 17.25 8 1.25 1.25 0 0 1 16 6.75a1.25 1.25 0 0 1 1.25-1.25M12 7a5 5 0 0 1 5 5 5 5 0 0 1-5 5 5 5 0 0 1-5-5 5 5 0 0 1 5-5m0 2a3 3 0 0 0-3 3 3 3 0 0 0 3 3 3 3 0 0 0 3-3 3 3 0 0 0-3-3z" />
+                                </svg>
+                            </a>
+                            <a href="#" class="social-icon" title="YouTube">
+                                <svg viewBox="0 0 24 24" fill="currentColor">
+                                    <path
+                                        d="M10 15l5.19-3L10 9v6m11.56-7.83c.13.47.22 1.1.28 1.9.07.8.1 1.49.1 2.09L22 12c0 2.19-.16 3.8-.44 4.83-.25.9-.83 1.48-1.73 1.73-.47.13-1.33.22-2.65.28-1.3.07-2.49.1-3.59.1L12 19c-4.19 0-6.8-.16-7.83-.44-.9-.25-1.48-.83-1.73-1.73-.13-.47-.22-1.1-.28-1.9-.07-.8-.1-1.49-.1-2.09L2 12c0-2.19.16-3.8.44-4.83.25-.9.83-1.48 1.73-1.73.47-.13 1.33-.22 2.65-.28 1.3-.07 2.49-.1 3.59-.1L12 5c4.19 0 6.8.16 7.83.44.9.25 1.48.83 1.73 1.73z" />
+                                </svg>
+                            </a>
+                        </div>
+                    </div>
+
+                    <div class="cta-card glass-card">
+                        <h3>Need Bulk Projects?</h3>
+                        <p>Special discounts for colleges and student groups. Contact us for custom packages.</p>
+                        <button class="cta-outline-btn get-bulk-quote-btn">Get Bulk Quote</button>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Bulk Quote Modal -->
+    <div id="bulk-quote-modal" class="modal" aria-hidden="true">
+        <div class="modal-backdrop"></div>
+        <div class="modal-content">
+            <button class="modal-close bulk-modal-close" aria-label="Close">✕</button>
+            <div class="modal-header">
+                <h3>Request a Bulk Quote</h3>
+                <p>Tell us about your bulk project needs and we'll provide a custom package.</p>
+            </div>
+            <form id="bulk-quote-form" class="modal-form">
+                <label>Name</label>
+                <input type="text" name="name" required>
+
+                <label>Email</label>
+                <input type="email" name="email" required>
+
+                <label>Phone</label>
+                <input type="tel" name="phone" required>
+
+                <label>Organization / College (optional)</label>
+                <input type="text" name="organization">
+
+                <label>Number of Projects</label>
+                <input type="number" name="count" min="1" required>
+
+                <label>Requirements</label>
+                <textarea name="requirements" rows="4" required></textarea>
+
+                <div class="modal-actions">
+                    <button type="submit" class="btn primary">Send Request</button>
+                    <button type="button" class="btn secondary bulk-modal-close">Cancel</button>
+                </div>
+            </form>
+        </div>
+    </div>
+
+    <!-- Footer -->
+    <footer class="footer">
+        <div class="container">
+            <div class="footer-grid">
+                <div class="footer-column">
+                    <div class="footer-logo">
+                        <span class="logo-icon">⚡</span>
+                        <span class="logo-text">ProjectPro Hub</span>
+                    </div>
+                    <p class="footer-description">Empowering BTech students with premium projects, expert training, and
+                        professional development opportunities.</p>
+
+                </div>
+
+                <div class="footer-column">
+                    <h4 class="footer-title">Quick Links</h4>
+                    <ul class="footer-links">
+                        <li><a href="#home">Home</a></li>
+                        <li><a href="#services">Services</a></li>
+                        <li><a href="#projects">Projects</a></li>
+                        <li><a href="#training">Training</a></li>
+                        <li><a href="blog.html">Blog</a></li>
+                        <li><a href="#contact">Contact</a></li>
+                    </ul>
+                </div>
+
+                <div class="footer-column">
+                    <h4 class="footer-title">Services</h4>
+                    <ul class="footer-links">
+                        <li><a href="#projects">BTech Projects</a></li>
+                        <li><a href="#training">Online Training</a></li>
+                        <li><a href="#services">Web Development</a></li>
+                        <li><a href="#services">AI/ML Solutions</a></li>
+                        <li><a href="#services">Chatbot Development</a></li>
+                        <li><a href="#contact">Custom Projects</a></li>
+                    </ul>
+                </div>
+
+                <div class="footer-column">
+                    <h4 class="footer-title">Legal</h4>
+                    <ul class="footer-links">
+                        <li><a href="#" class="policy-link" data-policy="privacy">Privacy Policy</a></li>
+                        <li><a href="#" class="policy-link" data-policy="terms">Terms of Service</a></li>
+                        <li><a href="#" class="policy-link" data-policy="refund">Refund Policy</a></li>
+                        <li><a href="#" class="policy-link" data-policy="academic">Academic Integrity</a></li>
+                        <li><a href="#" class="policy-link" data-policy="cookie">Cookie Policy</a></li>
+                    </ul>
+                </div>
+            </div>
+
+            <div class="footer-bottom">
+                <p class="copyright">© 2026 ProjectPro Hub. Made with ❤️ for BTech Students.</p>
+                <div class="footer-social">
+                    <a href="#" class="footer-social-link">LinkedIn</a>
+                    <a href="#" class="footer-social-link">GitHub</a>
+                    <a href="#" class="footer-social-link">Instagram</a>
+                    <a href="#" class="footer-social-link">YouTube</a>
+                </div>
+            </div>
+        </div>
+    </footer>
+
+    <!-- Floating WhatsApp Button -->
+    <a href="https://wa.me/919014466834" class="whatsapp-float" target="_blank" title="Chat on WhatsApp">
+        <svg viewBox="0 0 24 24" fill="currentColor">
+            <path
+                d="M17.472 14.382c-.297-.149-1.758-.867-2.03-.967-.273-.099-.471-.148-.67.15-.197.297-.767.966-.94 1.164-.173.199-.347.223-.644.075-.297-.15-1.255-.463-2.39-1.475-.883-.788-1.48-1.761-1.653-2.059-.173-.297-.018-.458.13-.606.134-.133.298-.347.446-.52.149-.174.198-.298.298-.497.099-.198.05-.371-.025-.52-.075-.149-.669-1.612-.916-2.207-.242-.579-.487-.5-.669-.51-.173-.008-.371-.01-.57-.01-.198 0-.52.074-.792.372-.272.297-1.04 1.016-1.04 2.479 0 1.462 1.065 2.875 1.213 3.074.149.198 2.096 3.2 5.077 4.487.709.306 1.262.489 1.694.625.712.227 1.36.195 1.871.118.571-.085 1.758-.719 2.006-1.413.248-.694.248-1.289.173-1.413-.074-.124-.272-.198-.57-.347m-5.421 7.403h-.004a9.87 9.87 0 01-5.031-1.378l-.361-.214-3.741.982.998-3.648-.235-.374a9.86 9.86 0 01-1.51-5.26c.001-5.45 4.436-9.884 9.888-9.884 2.64 0 5.122 1.03 6.988 2.898a9.825 9.825 0 012.893 6.994c-.003 5.45-4.437 9.884-9.885 9.884m8.413-18.297A11.815 11.815 0 0012.05 0C5.495 0 .16 5.335.157 11.892c0 2.096.547 4.142 1.588 5.945L.057 24l6.305-1.654a11.882 11.882 0 005.683 1.448h.005c6.554 0 11.890-5.335 11.893-11.893a11.821 11.821 0 00-3.48-8.413z" />
+        </svg>
+    </a>
+
+    <!-- Auth Modal -->
+    <div id="auth-modal" class="auth-modal">
+        <div class="modal-backdrop"></div>
+        <div class="modal-content">
+            <button class="modal-close">&times;</button>
+
+            <div class="modal-tabs">
+                <button class="auth-tab active" data-target="login-form">
+                    <span>Sign In</span>
+                </button>
+                <button class="auth-tab" data-target="register-form">
+                    <span>Create Account</span>
+                </button>
+            </div>
+
+            <!-- Login Form -->
+            <form id="login-form" class="auth-form active">
+                <div class="form-group">
+                    <label>Email or Mobile</label>
+                    <input type="text" required placeholder="Enter email or phone" class="glass-input">
+                </div>
+                <div class="form-group">
+                    <label>Password</label>
+                    <input type="password" required placeholder="Enter your password" class="glass-input">
+                </div>
+                <button type="submit" class="auth-submit cta-btn primary">Sign In</button>
+            </form>
+
+            <!-- Register Form -->
+            <form id="register-form" class="auth-form">
+                <div class="form-group">
+                    <label>Full Name</label>
+                    <input type="text" required placeholder="John Doe" class="glass-input">
+                </div>
+                <div class="form-group">
+                    <label>Mobile Number</label>
+                    <input type="tel" required placeholder="+91 98765 43210" class="glass-input">
+                </div>
+                <div class="form-group">
+                    <label>Email Address</label>
+                    <input type="email" required placeholder="name@example.com" class="glass-input">
+                </div>
+                <div class="form-group">
+                    <label>Password</label>
+                    <input type="password" required placeholder="Create a strong password" class="glass-input">
+                </div>
+                <button type="submit" class="auth-submit cta-btn primary">Create Account</button>
+            </form>
+        </div>
+    </div>
+
+    <!-- Notification Popup -->
+    <div id="notification" class="notification">
+        <div class="notification-content">
+            <span id="notification-icon" class="notification-icon">✓</span>
+            <span id="notification-message" class="notification-message"></span>
+        </div>
+        <div class="notification-progress"></div>
+    </div>
+
+    <script src="js/particles.js"></script>
+    <script src="js/main.js"></script>
+</body>
+
+</html>
