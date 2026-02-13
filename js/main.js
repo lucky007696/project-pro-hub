@@ -57,11 +57,20 @@ function initializeApp() {
     loadCourses();
 }
 
+// === Helper: Get API URL ===
+function getApiUrl(endpoint) {
+    // Determine if running locally or in production
+    const isLocal = window.location.hostname === 'localhost' || window.location.hostname === '127.0.0.1';
+    // Use localhost:3000 for local dev, otherwise use relative path (which uses current origin)
+    return isLocal ? `http://localhost:3000${endpoint}` : endpoint;
+}
+
 // === Dynamic Content Loading ===
 
 async function loadProjects() {
     try {
-        const response = await fetch('http://localhost:3000/api/projects');
+        const url = getApiUrl('/api/projects');
+        const response = await fetch(url);
         const data = await response.json();
 
         if (!data.projects || data.projects.length === 0) return; // Keep static if no data
@@ -114,7 +123,8 @@ async function loadProjects() {
 
 async function loadCourses() {
     try {
-        const response = await fetch('http://localhost:3000/api/courses');
+        const url = getApiUrl('/api/courses');
+        const response = await fetch(url);
         const data = await response.json();
 
         if (!data.courses || data.courses.length === 0) return;
@@ -278,8 +288,9 @@ function initAuthModal() {
                 if (isLogin) {
                     const identifierInput = form.querySelector('input[type="text"]');
                     const passwordInput = form.querySelector('input[type="password"]');
+                    const url = getApiUrl('/api/login');
 
-                    response = await fetch('http://localhost:3000/api/login', {
+                    response = await fetch(url, {
                         method: 'POST',
                         headers: { 'Content-Type': 'application/json' },
                         body: JSON.stringify({
@@ -292,8 +303,9 @@ function initAuthModal() {
                     const mobileInput = form.querySelectorAll('input[type="tel"]')[0];
                     const emailInput = form.querySelector('input[type="email"]');
                     const passwordInput = form.querySelector('input[type="password"]');
+                    const url = getApiUrl('/api/register');
 
-                    response = await fetch('http://localhost:3000/api/register', {
+                    response = await fetch(url, {
                         method: 'POST',
                         headers: { 'Content-Type': 'application/json' },
                         body: JSON.stringify({
@@ -323,7 +335,8 @@ function initAuthModal() {
 
             } catch (error) {
                 console.error('Auth error:', error);
-                showNotification('Connection error. Is the server running?', 'error');
+                // Detailed error
+                showNotification(`Connection error: ${error.message}`, 'error');
             } finally {
                 btn.textContent = originalText;
                 btn.disabled = false;
@@ -460,7 +473,7 @@ function initHireModal() {
         };
 
         try {
-            const res = await fetch('http://localhost:3000/api/hires', {
+            const res = await fetch('/api/hires', {
                 method: 'POST',
                 headers: { 'Content-Type': 'application/json' },
                 body: JSON.stringify(data)
@@ -725,7 +738,7 @@ function initContactForm() {
 
         try {
             // Save to sessions database
-            const response = await fetch('http://localhost:3000/api/sessions', {
+            const response = await fetch('/api/sessions', {
                 method: 'POST',
                 headers: {
                     'Content-Type': 'application/json',
