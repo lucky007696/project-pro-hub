@@ -37,16 +37,24 @@ if (!fs.existsSync('./uploads')) {
 }
 app.use('/uploads', express.static(path.join(__dirname, 'uploads'))); // Serve uploaded images
 
-// Multer Storage
-const storage = multer.diskStorage({
-    destination: function (req, file, cb) {
-        cb(null, './uploads');
-    },
-    filename: function (req, file, cb) {
-        const uniqueSuffix = Date.now() + '-' + Math.round(Math.random() * 1E9);
-        cb(null, 'img-' + uniqueSuffix + path.extname(file.originalname));
-    }
+// Cloudinary Configuration
+const cloudinary = require('cloudinary').v2;
+const { CloudinaryStorage } = require('multer-storage-cloudinary');
+
+cloudinary.config({
+    cloud_name: process.env.CLOUDINARY_CLOUD_NAME,
+    api_key: process.env.CLOUDINARY_API_KEY,
+    api_secret: process.env.CLOUDINARY_API_SECRET
 });
+
+const storage = new CloudinaryStorage({
+    cloudinary: cloudinary,
+    params: {
+        folder: 'projectpro-hub',
+        allowed_formats: ['jpg', 'png', 'jpeg', 'webp'],
+    },
+});
+
 const upload = multer({ storage: storage });
 
 // MongoDB Connection
@@ -64,13 +72,24 @@ function requireAdmin(req, res, next) {
 }
 
 // === UPLOAD API ===
+// === UPLOAD API ===
 app.post('/api/upload', requireAdmin, upload.single('image'), (req, res) => {
     if (!req.file) return res.status(400).json({ error: 'No file uploaded' });
-    // Return relative path
-    res.json({ url: `/uploads/${req.file.filename}` });
+    // Return Cloudinary URL
+    res.json({ url: req.file.path });
 });
 
 // Routes
+
+// Get Users (Admin only)
+app.get('/api/users', requireAdmin, async (req, res) => {
+    try {
+        const users = await User.find().select('-password'); // Exclude passwords
+        res.json({ users });
+    } catch (e) {
+        res.status(500).json({ error: e.message });
+    }
+});
 
 // Register
 app.post('/api/register', async (req, res) => {
@@ -315,7 +334,15 @@ app.delete('/api/hires/:id', requireAdmin, async (req, res) => {
     }
 });
 
-// Admin Delete Bulk Quote
+// Admin List Bulk Quotes
+app.get('/api/bulk-quotes', requireAdmin, async (req, res) => {
+    try {
+        const bulkQuotes = await BulkQuote.find().sort({ createdAt: -1 });
+        res.json({ bulkQuotes });
+    } catch (e) {
+        res.status(500).json({ error: e.message });
+    }
+});
 app.delete('/api/bulk-quotes/:id', requireAdmin, async (req, res) => {
     try {
         const quote = await BulkQuote.findByIdAndDelete(req.params.id);
