@@ -1051,7 +1051,7 @@ function initCounters() {
                 });
             }
         });
-    }, { threshold: 0.5 });
+    }, { threshold: 0.1 });
 
     const statsSection = document.getElementById('stats');
     if (statsSection) {
