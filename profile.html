@@ -183,11 +183,11 @@
             const notification = document.getElementById('notification');
             const messageEl = document.getElementById('notification-message');
             const iconEl = document.getElementById('notification-icon');
-            
+
             messageEl.textContent = message;
             notification.className = `notification ${type} show`;
             iconEl.textContent = type === 'success' ? '✓' : '✕';
-            
+
             // Auto-hide after 4 seconds
             setTimeout(() => {
                 notification.classList.remove('show');
@@ -241,7 +241,7 @@
             };
 
             try {
-                const response = await fetch('http://localhost:3000/api/update-profile', {
+                const response = await fetch('/api/update-profile', {
                     method: 'POST',
                     headers: { 'Content-Type': 'application/json' },
                     body: JSON.stringify(updateData)
