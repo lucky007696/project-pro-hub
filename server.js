@@ -454,14 +454,42 @@ app.delete('/api/courses/:id', requireAdmin, async (req, res) => {
     }
 });
 
+// === SOCKET.IO & SERVER SETUP ===
+const http = require('http');
+const server = http.createServer(app);
+const { Server } = require("socket.io");
+const io = new Server(server, {
+    cors: {
+        origin: "*", // Allow all origins for now
+        methods: ["GET", "POST"]
+    }
+});
+
+let activeVisitors = 0;
+
+io.on('connection', (socket) => {
+    activeVisitors++;
+    console.log(`New visitor connected: ${socket.id}. Total: ${activeVisitors}`);
+
+    // Broadcast to all clients
+    io.emit('visitorUpdate', { count: activeVisitors });
+
+    socket.on('disconnect', () => {
+        activeVisitors--;
+        console.log(`Visitor disconnected: ${socket.id}. total: ${activeVisitors}`);
+        io.emit('visitorUpdate', { count: activeVisitors });
+    });
+});
+
 // Start Server
 if (require.main === module) {
-    app.listen(PORT, () => {
+    server.listen(PORT, () => {
         console.log(`Server running at http://localhost:${PORT}`);
         if (!process.env.MONGO_URI || process.env.MONGO_URI.includes('<username>')) {
             console.warn('WARNING: MongoDB URI is not set correctly in .env file!');
         }
     });
+
 }
 
 module.exports = app;

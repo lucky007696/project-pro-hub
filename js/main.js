@@ -55,6 +55,7 @@ function initializeApp() {
     initAuthModal();
     loadProjects();
     loadCourses();
+    initSocket();
 }
 
 // === Helper: Get API URL ===
@@ -1191,3 +1192,11 @@ document.addEventListener('DOMContentLoaded', () => {
 console.log('%cProjectPro Hub', 'font-size: 24px; font-weight: bold; color: #00d4ff;');
 console.log('%cBuilt with ❤️ for BTech Students', 'font-size: 14px; color: #94a3b8;');
 console.log('%cWebsite by ProjectPro Hub Team', 'font-size: 12px; color: #64748b;');
+
+// === Socket.io Visitor Tracking ===
+function initSocket() {
+    if (typeof io !== 'undefined') {
+        const socket = io();
+        console.log('Visitor tracking enabled');
+    }
+}

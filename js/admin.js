@@ -73,7 +73,24 @@ async function loadAll() {
   populateTable('courses-table', coursesRes.courses);
 
   const statsEl = document.getElementById('stats');
-  statsEl.innerHTML = `Users: ${usersRes.users.length} · Sessions: ${sessionsRes.sessions.length} · Projects: ${projectsRes.projects.length} · Courses: ${coursesRes.courses.length}`;
+
+  // Initialize Socket for Admin
+  if (typeof io !== 'undefined') {
+    const socket = io();
+    socket.on('visitorUpdate', (data) => {
+      updateStats(usersRes.users.length, sessionsRes.sessions.length, projectsRes.projects.length, coursesRes.courses.length, data.count);
+    });
+  }
+
+  updateStats(usersRes.users.length, sessionsRes.sessions.length, projectsRes.projects.length, coursesRes.courses.length, 'Loading...');
+}
+
+function updateStats(users, sessions, projects, courses, visitors) {
+  const statsEl = document.getElementById('stats');
+  statsEl.innerHTML = `
+        <span style="color: #4ade80; margin-right: 15px;">● Live Visitors: <b>${visitors}</b></span>
+        Users: ${users} · Sessions: ${sessions} · Projects: ${projects} · Courses: ${courses}
+    `;
 }
 
 // === DRAWER LOGIC ===
