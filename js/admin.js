@@ -352,7 +352,13 @@ function populateTable(id, data) {
                 <td>${row.title}</td>
                 <td>${row.level}</td>
                 <td>${row.duration}</td>
-            `;
+      `;
+    } else if (id === 'sessions-table') {
+      tr.innerHTML = `
+                <td>${row.name}</td>
+                <td>${row.sessionType}</td>
+                <td>${new Date(row.bookedAt).toLocaleString()}</td>
+      `;
     } else {
       // Default generic render
       Object.values(row).slice(0, 4).forEach(val => {
@@ -398,13 +404,13 @@ async function handleDelete(tableId, row) {
   if (!confirm('Delete this entry?')) return;
   try {
     let endpoint = '/api/';
-    if (tableId === 'users-table') endpoint += `users/${row._id}`; // Check ID keys carefully in your DB
-    else if (tableId === 'sessions-table') endpoint += `sessions/${row._id}`;
-    else if (tableId === 'hires-table') endpoint += `hires/${row._id}`;
-    else if (tableId === 'bulk-table') endpoint += `bulk-quotes/${row._id}`;
-    else if (tableId === 'logins-table') endpoint += `logins/${row._id}`;
-    else if (tableId === 'projects-table') endpoint += `projects/${row._id}`;
-    else if (tableId === 'courses-table') endpoint += `courses/${row._id}`;
+    if (tableId === 'users-table') endpoint += `users / ${row._id} `; // Check ID keys carefully in your DB
+    else if (tableId === 'sessions-table') endpoint += `sessions / ${row._id} `;
+    else if (tableId === 'hires-table') endpoint += `hires / ${row._id} `;
+    else if (tableId === 'bulk-table') endpoint += `bulk - quotes / ${row._id} `;
+    else if (tableId === 'logins-table') endpoint += `logins / ${row._id} `;
+    else if (tableId === 'projects-table') endpoint += `projects / ${row._id} `;
+    else if (tableId === 'courses-table') endpoint += `courses / ${row._id} `;
 
     // Fallback for different ID keys if necessary
     // In Mongoose it's usually _id
