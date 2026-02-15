@@ -2354,6 +2354,27 @@ section {
 }
 
 @media (max-width: 768px) {
+    .nav-container {
+        padding: 0.8rem 1rem;
+        /* Reduce padding */
+    }
+
+    .logo {
+        font-size: 1.2rem;
+        /* Smaller logo text */
+    }
+
+    .logo-icon {
+        font-size: 1.5rem;
+        /* Smaller logo icon */
+    }
+
+    .navbar {
+        background: rgba(10, 25, 47, 0.85);
+        /* Slightly more transparent */
+        backdrop-filter: blur(15px);
+    }
+
     .nav-links {
         position: fixed;
         top: 0;
