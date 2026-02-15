@@ -4,7 +4,7 @@
 // ===============================================
 
 // === Global Variables ===
-let currentTestimonial = 0;
+
 let isFormSubmitted = false;
 
 // === Notification Function ===
@@ -42,7 +42,7 @@ function initializeApp() {
     initScrollAnimations();
     initProjectFilters();
     initTrainingTabs();
-    initTestimonialSlider();
+
     initFAQ();
     initContactForm();
     initBulkQuoteModal();
@@ -648,45 +648,7 @@ function initTrainingTabs() {
     });
 }
 
-// === Testimonial Slider ===
-function initTestimonialSlider() {
-    const prevBtn = document.querySelector('.slider-btn.prev');
-    const nextBtn = document.querySelector('.slider-btn.next');
-    const dots = document.querySelectorAll('.dot');
-    const testimonials = document.querySelectorAll('.testimonial-card');
 
-    if (!prevBtn || !nextBtn) return;
-
-    function showTestimonial(index) {
-        // This is simplified - in production, you'd implement actual sliding
-        dots.forEach((dot, i) => {
-            dot.classList.toggle('active', i === index);
-        });
-    }
-
-    prevBtn.addEventListener('click', () => {
-        currentTestimonial = (currentTestimonial - 1 + testimonials.length) % testimonials.length;
-        showTestimonial(currentTestimonial);
-    });
-
-    nextBtn.addEventListener('click', () => {
-        currentTestimonial = (currentTestimonial + 1) % testimonials.length;
-        showTestimonial(currentTestimonial);
-    });
-
-    dots.forEach((dot, index) => {
-        dot.addEventListener('click', () => {
-            currentTestimonial = index;
-            showTestimonial(currentTestimonial);
-        });
-    });
-
-    // Auto-slide every 5 seconds
-    setInterval(() => {
-        currentTestimonial = (currentTestimonial + 1) % testimonials.length;
-        showTestimonial(currentTestimonial);
-    }, 5000);
-}
 
 // === FAQ Accordion ===
 function initFAQ() {
