@@ -321,9 +321,9 @@
         <div class="container">
             <div class="stats-grid">
                 <div class="stat-item" data-aos="zoom-in" data-delay="0">
-                    <div class="stat-number" data-count="5">0</div>
+                    <div class="stat-number" id="total-visits-count" data-count="0">0</div>
                     <div class="stat-suffix">+</div>
-                    <div class="stat-label">Years Experience</div>
+                    <div class="stat-label">Total Visits</div>
                 </div>
                 <div class="stat-item" data-aos="zoom-in" data-delay="100">
                     <div class="stat-number" data-count="50">0</div>
@@ -824,6 +824,24 @@
     }
     </script>
     <script src="js/main.js"></script>
+    <script>
+        // Fetch and display persistent Total Visits
+        document.addEventListener('DOMContentLoaded', () => {
+            const statsElement = document.getElementById('total-visits-count'); // Ensure you have this ID in your stats HTML
+            if (statsElement) {
+                fetch('/api/stats')
+                    .then(res => res.json())
+                    .then(data => {
+                        if (data.totalVisits !== undefined) {
+                            statsElement.textContent = data.totalVisits;
+                            // Update data-count attribute for existing animation script if present
+                            statsElement.setAttribute('data-count', data.totalVisits);
+                        }
+                    })
+                    .catch(e => console.error('Error fetching stats:', e));
+            }
+        });
+    </script>
 </body>
 
 </html>

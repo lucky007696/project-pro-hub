@@ -456,6 +456,28 @@ app.delete('/api/courses/:id', requireAdmin, async (req, res) => {
 
 const SiteStats = require('./models/SiteStats');
 
+// Middleware to track total visits on homepage load
+app.use(async (req, res, next) => {
+    if (req.method === 'GET' && req.path === '/') {
+        try {
+            await SiteStats.findOneAndUpdate({}, { $inc: { totalVisits: 1 } }, { upsert: true, new: true });
+        } catch (error) {
+            console.error('Error tracking visit:', error);
+        }
+    }
+    next();
+});
+
+// API Route to fetch stats
+app.get('/api/stats', async (req, res) => {
+    try {
+        const stats = await SiteStats.findOne();
+        res.json({ totalVisits: stats ? stats.totalVisits : 0 });
+    } catch (e) {
+        res.status(500).json({ error: e.message });
+    }
+});
+
 // === SOCKET.IO & SERVER SETUP ===
 const http = require('http');
 const server = http.createServer(app);

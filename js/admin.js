@@ -65,14 +65,16 @@ async function loadAll() {
   populateTable('bulk-table', bulkRes.bulkQuotes);
   populateTable('logins-table', loginsRes.logins);
 
-  const [projectsRes, coursesRes] = await Promise.all([
+  const [projectsRes, coursesRes, statsRes] = await Promise.all([
     fetchAdmin('/api/projects'),
-    fetchAdmin('/api/courses')
+    fetchAdmin('/api/courses'),
+    fetchAdmin('/api/stats')
   ]);
   populateTable('projects-table', projectsRes.projects);
   populateTable('courses-table', coursesRes.courses);
 
   const statsEl = document.getElementById('stats');
+  let currentTotalVisits = statsRes.totalVisits || 0;
 
   // Initialize Socket for Admin
   if (typeof io !== 'undefined') {
@@ -80,12 +82,12 @@ async function loadAll() {
     socket.on('visitorUpdate', (data) => {
       // Handle both old format (count) and new format (active, total)
       const active = data.active !== undefined ? data.active : data.count;
-      const total = data.total !== undefined ? data.total : '...';
+      const total = data.total !== undefined ? data.total : currentTotalVisits;
       updateStats(usersRes.users.length, sessionsRes.sessions.length, projectsRes.projects.length, coursesRes.courses.length, active, total);
     });
   }
 
-  updateStats(usersRes.users.length, sessionsRes.sessions.length, projectsRes.projects.length, coursesRes.courses.length, '...', '...');
+  updateStats(usersRes.users.length, sessionsRes.sessions.length, projectsRes.projects.length, coursesRes.courses.length, '...', currentTotalVisits);
 }
 
 function updateStats(users, sessions, projects, courses, active, total) {
