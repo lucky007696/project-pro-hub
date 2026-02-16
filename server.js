@@ -454,15 +454,23 @@ app.delete('/api/courses/:id', requireAdmin, async (req, res) => {
     }
 });
 
+const cookieParser = require('cookie-parser');
+app.use(cookieParser());
+
 const SiteStats = require('./models/SiteStats');
 
-// Middleware to track total visits on homepage load
+// Middleware to track unique visits (30 min session)
 app.use(async (req, res, next) => {
     if (req.method === 'GET' && req.path === '/') {
-        try {
-            await SiteStats.findOneAndUpdate({}, { $inc: { totalVisits: 1 } }, { upsert: true, new: true });
-        } catch (error) {
-            console.error('Error tracking visit:', error);
+        if (!req.cookies.visited) {
+            try {
+                // Increment only if no cookie
+                await SiteStats.findOneAndUpdate({}, { $inc: { totalVisits: 1 } }, { upsert: true, new: true });
+                // Set cookie for 30 minutes
+                res.cookie('visited', 'true', { maxAge: 30 * 60 * 1000, httpOnly: true });
+            } catch (error) {
+                console.error('Error tracking visit:', error);
+            }
         }
     }
     next();
@@ -494,29 +502,25 @@ let activeVisitors = 0;
 io.on('connection', async (socket) => {
     activeVisitors++;
 
-    // Increment Total Visits in DB
+    // Fetch latest stats (DO NOT INCREMENT HERE)
     let stats = await SiteStats.findOne();
-    if (!stats) {
-        stats = new SiteStats({ totalVisits: 0 });
-    }
-    stats.totalVisits++;
-    await stats.save();
+    const totalVisits = stats ? stats.totalVisits : 0;
 
-    console.log(`New visitor connected: ${socket.id}. total: ${activeVisitors}. Historical: ${stats.totalVisits}`);
+    console.log(`New visitor connected: ${socket.id}. Active: ${activeVisitors}. Total: ${totalVisits}`);
 
-    // Broadcast to all clients (Active + Historical)
+    // Broadcast to all clients
     io.emit('visitorUpdate', {
         active: activeVisitors,
-        total: stats.totalVisits
+        total: totalVisits
     });
 
     socket.on('disconnect', () => {
         activeVisitors--;
-        console.log(`Visitor disconnected: ${socket.id}. total: ${activeVisitors}`);
-        // Broadcast update (total doesn't change on disconnect)
+        console.log(`Visitor disconnected: ${socket.id}. Active: ${activeVisitors}`);
+        // Broadcast update
         io.emit('visitorUpdate', {
             active: activeVisitors,
-            total: stats.totalVisits
+            total: totalVisits
         });
     });
 });
