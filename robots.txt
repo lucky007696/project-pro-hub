@@ -1,0 +1,6 @@
+User-agent: *
+Allow: /
+Disallow: /admin/
+Disallow: /includes/
+Disallow: /private/
+Sitemap: https://project-pro-hub.onrender.com/sitemap.xml
