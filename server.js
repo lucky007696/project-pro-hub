@@ -30,6 +30,28 @@ app.use((req, res, next) => {
     next();
 });
 
+const cookieParser = require('cookie-parser');
+app.use(cookieParser());
+
+const SiteStats = require('./models/SiteStats');
+
+// Middleware to track unique visits (30 min session)
+app.use(async (req, res, next) => {
+    if (req.method === 'GET' && (req.path === '/' || req.path === '/index.html')) {
+        if (!req.cookies || !req.cookies.visited) {
+            try {
+                // Increment only if no cookie
+                await SiteStats.findOneAndUpdate({}, { $inc: { totalVisits: 1 } }, { upsert: true, new: true });
+                // Set cookie for 30 minutes
+                res.cookie('visited', 'true', { maxAge: 30 * 60 * 1000, httpOnly: true });
+            } catch (error) {
+                console.error('Error tracking visit:', error);
+            }
+        }
+    }
+    next();
+});
+
 app.use(express.static(__dirname));
 // Ensure uploads directory exists
 if (!fs.existsSync('./uploads')) {
@@ -454,27 +476,6 @@ app.delete('/api/courses/:id', requireAdmin, async (req, res) => {
     }
 });
 
-const cookieParser = require('cookie-parser');
-app.use(cookieParser());
-
-const SiteStats = require('./models/SiteStats');
-
-// Middleware to track unique visits (30 min session)
-app.use(async (req, res, next) => {
-    if (req.method === 'GET' && req.path === '/') {
-        if (!req.cookies.visited) {
-            try {
-                // Increment only if no cookie
-                await SiteStats.findOneAndUpdate({}, { $inc: { totalVisits: 1 } }, { upsert: true, new: true });
-                // Set cookie for 30 minutes
-                res.cookie('visited', 'true', { maxAge: 30 * 60 * 1000, httpOnly: true });
-            } catch (error) {
-                console.error('Error tracking visit:', error);
-            }
-        }
-    }
-    next();
-});
 
 // API Route to fetch stats
 app.get('/api/stats', async (req, res) => {
