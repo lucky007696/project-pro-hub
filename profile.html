@@ -207,7 +207,7 @@
         const user = JSON.parse(storedUser);
 
         // Populate Fields
-        document.getElementById('userId').value = user.id;
+        document.getElementById('userId').value = user._id || user.id;
         document.getElementById('name').value = user.name || '';
         document.getElementById('mobile').value = user.mobile || '';
         document.getElementById('email').value = user.email || '';
@@ -233,7 +233,7 @@
             btn.disabled = true;
 
             const updateData = {
-                id: parseInt(document.getElementById('userId').value),
+                id: document.getElementById('userId').value,
                 name: document.getElementById('name').value,
                 email: document.getElementById('email').value,
                 mobile: document.getElementById('mobile').value,
