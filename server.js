@@ -24,6 +24,12 @@ const ADMIN_PASSWORD = process.env.ADMIN_PASSWORD || 'admin123';
 app.use(cors());
 app.use(bodyParser.json());
 
+// Force Googlebot to index the site via HTTP Headers
+app.use((req, res, next) => {
+    res.setHeader('X-Robots-Tag', 'index, follow');
+    next();
+});
+
 // Request logging middleware
 app.use((req, res, next) => {
     console.log(`[${new Date().toISOString()}] ${req.method} ${req.url}`);
